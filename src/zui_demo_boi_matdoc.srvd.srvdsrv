@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Demo Create Material Document'
+define service ZUI_DEMO_BOI_MATDOC {
+  expose ZC_DEMO_BOI_MATDOC;
+}

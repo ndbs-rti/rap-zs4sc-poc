@@ -1,0 +1,41 @@
+@Metadata.layer: #CORE
+annotate view ZC_Demo_Mass_PI_Count
+    with 
+{
+
+    @UI: { lineItem: [ { position: 10 }, 
+           { type: #FOR_ACTION, dataAction: 'Count', label: 'Count' } ], 
+           selectionField: [ { position: 10 } ] }
+    Material;
+    
+    @UI: { lineItem: [ { position: 20 } ], 
+           selectionField: [ { position: 20 } ] }
+    Plant;
+    
+    @UI: { lineItem: [ { position: 30, label: 'SLoc.' } ], 
+           selectionField: [ { position: 30 } ] }
+    StorageLocation;
+    
+    @UI: { lineItem: [ { position: 40 } ] }
+    Batch;
+    
+    @UI: { lineItem: [ { position: 42, label: 'Current Qty.' } ] }
+    Stock;
+    
+    @UI: { lineItem: [ { position: 50, label: 'Count Qty.' } ] }
+    QuantityInUnitOfEntry;
+    
+    @UI: { lineItem: [ { position: 60, label: 'PI Doc.' } ] }
+    PhysicalInventoryDocument;
+    
+    @UI: { lineItem: [ { position: 70, label: 'Year' } ] }
+    FiscalYear;
+    
+    @UI: { lineItem: [ { position: 80 } ], 
+           selectionField: [ { position: 40 } ] }
+    CountedByUser;
+    
+    @UI: { lineItem: [ { position: 90 } ] }
+    PhysicalInventoryLastCountDate;
+    
+}

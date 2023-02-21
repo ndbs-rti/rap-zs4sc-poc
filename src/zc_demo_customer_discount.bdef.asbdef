@@ -1,0 +1,10 @@
+projection;
+use draft;
+
+define behavior for ZC_Demo_Customer_Discount alias CustomerDiscount
+use etag{
+  use create;
+  use update;
+  use delete;
+  use action testaction;
+}

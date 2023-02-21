@@ -1,0 +1,31 @@
+managed implementation in class zbp_i_demo_mass_phy_doc unique;
+with draft;
+
+define behavior for ZI_Demo_Mass_Phy_Doc alias DemoMassPhyDoc
+persistent table zdemoe0003_ta01
+draft table zdemod0003_ta01
+lock master total etag LastChangeTime
+etag master LastChangeTime
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) UUID;
+  field ( readonly ) UserName, LastChangeTime;
+
+  action ( features : instance ) CreatePhyDoc result [1] $self;
+
+  mapping for zdemoe0003_ta01
+  {
+    MaterialNumber = matnr;
+    Plant = werks;
+    StorageLocation = lgort;
+    Batch = charg;
+    Quantity = erfmg;
+    Unit = erfme;
+    UserName = usnam;
+    LastChangeTime = chtim;
+  }
+
+}

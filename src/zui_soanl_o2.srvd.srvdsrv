@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZUI_SOANL_O2'
+define service ZUI_SOANL_O2 {
+  expose ZC_Demo_SalesOrderAnalytic;
+}

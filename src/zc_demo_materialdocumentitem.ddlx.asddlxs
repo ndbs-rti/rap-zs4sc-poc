@@ -1,0 +1,22 @@
+@Metadata.layer: #CORE
+annotate view ZC_Demo_MaterialDocumentItem
+    with 
+{
+
+  @UI:{ lineItem: [{position: 10 }] }
+    Material;
+  @UI:{ lineItem: [{position: 20 }] }
+    Plant;
+  @UI:{ lineItem: [{position: 30 }] }
+    StorageLocation;
+  @UI:{ lineItem: [{position: 40 }] }
+    Batch;
+  @UI:{ lineItem: [{position: 50 }] }
+    InventoryStockType;
+  @UI:{ lineItem: [{position: 60 }] }
+    GoodsMovementType;
+  @UI:{ lineItem: [{position: 70 }] }
+    QuantityInEntryUnit;
+  @UI:{ lineItem: [{position: 80 }] }
+    EntryUnit;
+}

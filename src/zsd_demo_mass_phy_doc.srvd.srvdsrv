@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for ZC_DEMO_MASS_PHY_DOC'
+define service ZSD_DEMO_MASS_PHY_DOC {
+  expose ZC_Demo_Mass_Phy_Doc as MassPhyDoc;
+}

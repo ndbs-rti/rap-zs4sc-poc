@@ -1,0 +1,23 @@
+managed implementation in class zbp_i_demo_boi_matdoc unique;
+with draft;
+
+define behavior for ZI_DEMO_BOI_MATDOC //alias <alias_name>
+persistent table zdemoe0002_ta01
+draft table zdemod0002_ta01
+lock master total etag LastChangedAt
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+  determination at_create on modify { create; }
+
+  mapping for ZDEMOE0001_TA01
+  {
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

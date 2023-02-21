@@ -1,0 +1,28 @@
+managed implementation in class zbp_i_demo_customer_discount unique;
+with draft;
+
+define behavior for ZI_Demo_Customer_Discount alias CustomerDiscount
+persistent table ZDEMOE0001_TA01
+draft table ZDEMOD0001_TA01
+lock master total etag LastChangedAt
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+  determination at_create on modify { create; }
+  action testaction;
+
+  mapping for ZDEMOE0001_TA01
+  {
+    BusinessPartner = partner;
+    Product = matnr;
+    PercentDiscount = percent_discount;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+
+}

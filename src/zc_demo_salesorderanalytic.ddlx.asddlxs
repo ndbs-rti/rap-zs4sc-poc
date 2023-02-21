@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+@UI.chart: [{ qualifier: 'Default',
+              title: 'Sales Order Analytic Report',
+              description: 'Sales Order Analytic Report',
+              chartType: #COLUMN,
+              dimensions: ['SalesOrder', 'SoldToParty', 'Product', 'TransactionCurrency'],
+              measures: ['NetAmount', 'PriceAfterDiscount', 'CustomerDiscountAmount'],
+              dimensionAttributes: [{ dimension: 'SalesOrder',
+                                      role: #CATEGORY },
+                                    { dimension: 'SoldToParty',
+                                      role: #CATEGORY },
+                                    { dimension: 'Product',
+                                      role: #CATEGORY },
+                                    { dimension: 'TransactionCurrency',
+                                      role: #CATEGORY }],
+              measureAttributes: [{ measure: 'NetAmount',
+                                    role: #AXIS_1,
+                                    asDataPoint: false },
+                                  { measure: 'PriceAfterDiscount',
+                                    role: #AXIS_1,
+                                    asDataPoint: false },
+                                  { measure: 'CustomerDiscountAmount',
+                                    role: #AXIS_1,
+                                    asDataPoint: false }] }]
+@UI.presentationVariant: [{requestAtLeast: ['SalesOrder', 'SalesOrderItem']}]
+annotate view ZC_Demo_SalesOrderAnalytic
+    with 
+{
+    @UI.lineItem: [{ position: 10 }]
+    @UI.selectionField: [{ position: 10 }]
+    SalesOrder;
+    
+    @UI.lineItem: [{ position: 20 }]
+    SalesOrderItem;
+    
+    @UI.lineItem: [{ position: 30 }]
+    @UI.selectionField: [{ position: 20 }]
+    SoldToParty;
+    
+    @UI.lineItem: [{ position: 40 }]
+    @UI.selectionField: [{ position: 30 }]
+    Product;
+    
+    @UI.lineItem: [{ position: 50 }]
+    NetAmount;
+    
+    @UI.lineItem: [{ position: 60, label: 'Price After Discount' }]
+    PriceAfterDiscount;
+    
+    @UI.lineItem: [{ position: 70, label: 'Customer Discount Amount' }]
+    CustomerDiscountAmount;
+    
+    @UI.lineItem: [{ position: 80 }]
+    TransactionCurrency;
+}

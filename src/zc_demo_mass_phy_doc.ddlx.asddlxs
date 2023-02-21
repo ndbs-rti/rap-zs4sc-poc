@@ -1,0 +1,58 @@
+@Metadata.layer: #CORE
+annotate view ZC_Demo_Mass_Phy_Doc
+    with 
+{
+
+    @UI.facet: [{
+        id: 'Data',
+        purpose: #STANDARD,
+        position: 10,
+        label: 'Data',
+        type: #IDENTIFICATION_REFERENCE
+    }]
+
+    @UI.hidden: true
+    UUID;
+  
+    @UI: { lineItem: [ { position: 10 }, 
+           { type: #FOR_ACTION, dataAction: 'CreatePhyDoc', 
+           label: 'Create Physical Inventory Doc.' } ], 
+           selectionField: [ { position: 10 } ],
+           identification: [{position: 10 }] }
+    MaterialNumber;
+    
+    @UI: { lineItem: [ { position: 20 } ], 
+           selectionField: [ { position: 20 } ],
+           identification: [{position: 20 }] }
+    Plant;
+    
+    @UI: { lineItem: [ { position: 30 } ], 
+           selectionField: [ { position: 30 } ],
+           identification: [{position: 30 }] }
+    StorageLocation;
+    
+    @UI: { lineItem: [ { position: 40 } ],
+           identification: [{position: 40 }] }
+    Batch;
+    
+    @UI: { lineItem: [ { position: 50 } ],
+           identification: [{position: 50 }] }
+    Quantity;
+    
+    @UI: { lineItem: [ { position: 60 } ],
+           identification: [{position: 60 }] }
+    Unit;
+    
+    @UI: { lineItem: [ { position: 70 } ] }
+    PhysicalInventoryDocument;
+    
+    @UI: { lineItem: [ { position: 80 } ] }
+    FiscalYear;
+    
+    @UI: { lineItem: [ { position: 90 } ], 
+           selectionField: [ { position: 40 } ] }
+    UserName;
+    
+    @UI: { lineItem: [ { position: 100 } ] }
+    LastChangeTime;
+}

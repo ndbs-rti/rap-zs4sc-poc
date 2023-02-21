@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZI_TEST_SD'
+define service ZI_TEST_SD {
+  expose ZI_Demo_Customer_Discount;
+}

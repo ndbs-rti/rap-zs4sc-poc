@@ -1,0 +1,9 @@
+@Metadata.layer: #CORE
+annotate entity ZA_Count_Params
+    with 
+{
+    @EndUserText.label: 'Qty. Count'
+    QtyCount;
+    @UI.hidden: true
+    Unit;
+}

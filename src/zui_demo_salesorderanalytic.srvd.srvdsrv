@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Demo Sales Order Analytic'
+define service ZUI_DEMO_SALESORDERANALYTIC {
+  expose ZC_Demo_SalesOrderAnalytic as SalesOrderAnalytic;
+}

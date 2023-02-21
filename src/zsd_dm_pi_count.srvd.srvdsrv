@@ -1,0 +1,4 @@
+@EndUserText.label: 'Demo Mass PI Count'
+define service ZSD_DM_PI_COUNT {
+  expose ZC_Demo_Mass_PI_Count;
+}

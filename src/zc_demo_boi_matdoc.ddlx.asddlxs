@@ -1,0 +1,122 @@
+@Metadata.layer: #CORE
+annotate view ZC_DEMO_BOI_MATDOC
+    with 
+{
+    @UI.facet: [
+    { purpose: #HEADER,
+      position: 10,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'Material' },   
+    { id: 'MaterialFacet', 
+      purpose: #STANDARD, 
+      type: #IDENTIFICATION_REFERENCE, 
+      label: 'Material', 
+      position: 10 } ]
+
+    @UI: { 
+        selectionField: [ { position: 10 } ],
+        lineItem: [ { position: 10 } ]
+    }
+    @UI.dataPoint: { qualifier: 'Product', 
+                     title: 'Product' }  
+    Materialdocumentheadertext;
+    
+    @UI: { 
+        selectionField: [ { position: 20 } ],
+        lineItem: [ { position: 20 } ],
+        identification: [ { label: 'Posting Date' } ]
+    }
+    Postingdate;
+    
+    @UI: { 
+        selectionField: [ { position: 30 } ],
+        lineItem: [ { position: 30 } ],
+        identification: [ { label: 'Goods Movement Code' } ]
+    }
+    Goodsmovementcode;
+    
+    @UI: { 
+        selectionField: [ { position: 40 } ],
+        lineItem: [ { position: 40 } ],
+        identification: [ { label: 'Material ID' } ]
+    }
+    Material;
+    
+    @UI: { 
+        selectionField: [ { position: 50 } ],
+        lineItem: [ { position: 50 } ],
+        identification: [ { label: 'Plant ID' } ]
+    }
+    Plant;
+    
+    @UI: { 
+        selectionField: [ { position: 60 } ],
+        lineItem: [ { position: 60 } ],
+        identification: [ { label: 'Storage Location' } ]
+    }
+    Storagelocation;
+    
+    @UI: { 
+        selectionField: [ { position: 70 } ],
+        lineItem: [ { position: 70 } ],
+        identification: [ { label: 'Batch ID' } ]
+    }
+    Batch;
+    
+    @UI: { 
+        selectionField: [ { position: 80 } ],
+        lineItem: [ { position: 80 } ],
+        identification: [ { label: 'Goods Movement Type' } ]
+    }
+    Goodsmovementtype;
+    
+    @UI: { 
+        selectionField: [ { position: 90 } ],
+        lineItem: [ { position: 90 } ],
+        identification: [ { label: 'Inventory Special Stock Type' } ]
+    }
+    Inventoryspecialstocktype;
+    
+    @UI: { 
+        selectionField: [ { position: 100 } ],
+        lineItem: [ { position: 100 } ],
+        identification: [ { label: 'Cost Center ID' } ]
+    }
+    Costcenter;
+    
+    @UI: { 
+        selectionField: [ { position: 110 } ],
+        lineItem: [ { position: 110 } ],
+        identification: [ { label: 'GL Account ID' } ]
+    }
+    Glaccount;
+    
+    @UI: { 
+        selectionField: [ { position: 120 } ],
+        lineItem: [ { position: 120 } ],
+        identification: [ { label: 'Entry Unit' } ]
+    }
+    Entryunit;
+    
+    @UI: { 
+        selectionField: [ { position: 130 } ],
+        lineItem: [ { position: 130 } ],
+        identification: [ { label: 'Quantity in Entry Unit' } ]
+    }
+    Quantityinentryunit;
+    
+    @UI.lineItem: [ { position: 40, label: 'Created By' } ] 
+    CreatedBy;
+    
+    @UI.lineItem: [ { position: 50, label: 'Created At' } ] 
+    CreatedAt;
+    
+    @UI.lineItem: [ { position: 60, label: 'Last Changed By' } ] 
+    LastChangedBy;
+    
+    @UI.lineItem: [ { position: 70, label: 'Last Changed At' } ] 
+    LastChangedAt;
+    
+    @UI.hidden: true
+    LocalLastChangedAt;
+}

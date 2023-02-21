@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Demo Customer Discount'
+define service ZUI_DEMO_CUSTOMER_DISCOUNT {
+  expose ZC_Demo_Customer_Discount as CustomerDiscount;
+}

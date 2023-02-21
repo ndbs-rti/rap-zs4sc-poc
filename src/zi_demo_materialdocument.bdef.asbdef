@@ -1,0 +1,25 @@
+unmanaged implementation in class zbp_i_demo_materialdocument unique;
+//strict ( 1 );
+
+define behavior for ZI_Demo_MaterialDocument //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  action testaction;
+  action ( features : instance ) acceptTravel result [1] $self;
+  association _MaterialDocumentItem { internal create; }
+  field ( suppress ) plant, storagelocation, issuingorreceivingplant, issuingorreceivingstorageloc;
+}
+
+define behavior for ZI_Demo_MaterialDocumentItem //alias <alias_name>
+//late numbering
+lock dependent by _MaterialDocument
+authorization dependent by _MaterialDocument
+//etag master <field_name>
+{
+  field ( readonly ) MaterialDocumentYear, MaterialDocument;
+  association _MaterialDocument;
+  field ( suppress ) goodsreceipttype, consumptionposting, multiacctassgmtoriglmatldocitm, multipleaccountassignmentcode;
+}

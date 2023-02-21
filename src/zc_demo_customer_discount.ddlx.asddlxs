@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeNamePlural: 'Customer Discount', 
+                  typeName: '',
+                  title: { type: #STANDARD, value: 'BusinessPartner' },
+                  description: { value: 'BusinessPartnerName' } } 
+annotate view ZC_Demo_Customer_Discount
+    with 
+{
+    @UI.facet: [
+    { purpose: #HEADER,
+      position: 10,
+      type: #DATAPOINT_REFERENCE,
+      targetQualifier: 'Product' },   
+    { id: 'DiscountFacet', 
+      purpose: #STANDARD, 
+      type: #IDENTIFICATION_REFERENCE, 
+      label: 'Discount', 
+      position: 10 } ]
+  
+    @UI: { lineItem: [ { position: 10 } ], 
+           selectionField: [ { position: 10 } ] }
+    BusinessPartner;
+    
+    @UI: { lineItem: [ { position: 20 } ], 
+           selectionField: [ { position: 20 } ] }
+    @UI.dataPoint: { qualifier: 'Product', 
+                     title: 'Product' }  
+    Product;
+    
+    @UI.hidden: true
+    BusinessPartnerName;
+    
+    @UI.hidden: true
+    ProductName;
+    
+    @UI: { lineItem: [ { position: 30, label: '%Discount' } ],
+           identification: [ { position: 10, label: '%Discount' } ] }
+    PercentDiscount;
+    
+    @UI.lineItem: [ { position: 40, label: 'Created By' } ] 
+    CreatedBy;
+    
+    @UI.lineItem: [ { position: 50, label: 'Created At' } ] 
+    CreatedAt;
+    
+    @UI.lineItem: [ { position: 60, label: 'Last Changed By' } ] 
+    LastChangedBy;
+    
+    @UI.lineItem: [ { position: 70, label: 'Last Changed At' } ] 
+    LastChangedAt;
+    
+    @UI.hidden: true
+    LocalLastChangedAt;
+    
+}

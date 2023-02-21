@@ -1,0 +1,8 @@
+unmanaged implementation in class zbp_i_demo_mass_pi_count unique;
+define behavior for ZI_Demo_Mass_PI_Count
+lock master
+authorization master ( instance )
+{
+    field ( readonly ) FiscalYear, PhysicalInventoryDocument, PhysicalInventoryDocumentItem;
+    action( features : instance ) Count parameter ZA_Count_Params result [1] $self;
+}

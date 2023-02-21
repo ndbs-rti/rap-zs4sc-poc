@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for ZUI_DEMO_MATERIALDOC'
+define service ZUI_DEMO_MATERIALDOC {
+  expose ZC_Demo_MaterialDocument as MaterialDocument;
+  expose ZC_Demo_MaterialDocumentItem as MaterialDocumentItem;
+}

@@ -1,0 +1,60 @@
+@Metadata.layer: #CORE
+@UI:{ headerInfo: {
+    typeName: 'Material Document',
+    typeNamePlural: 'Material Documents',
+    title: {
+        type: #STANDARD,
+        value: 'MaterialDocument'
+    }
+} }
+annotate view ZC_Demo_MaterialDocument
+    with 
+{
+
+  @UI.facet: [{
+        id: 'Header',
+        purpose: #STANDARD,
+        position: 10,
+        label: 'Header Data',
+        type: #IDENTIFICATION_REFERENCE
+    },
+    {   
+        id: 'Item', 
+        purpose: #STANDARD, 
+        type: #LINEITEM_REFERENCE,  
+        position: 20,
+        label: 'Item',
+        targetElement: '_MaterialDocumentItem'
+    }]
+
+  @UI:{ lineItem: [{position: 10,importance: #HIGH }
+   , { type: #FOR_ACTION, dataAction: 'testaction', label: 'Test Action' }],
+           identification: [{position: 10 }],
+           selectionField: [{position: 10 }]}
+    MaterialDocumentYear;
+    
+  @UI:{ lineItem: [{position: 20,importance: #HIGH }],
+           identification: [{position: 20 }],
+           selectionField: [{position: 20 }] }
+    MaterialDocument;
+    
+  @UI:{ lineItem: [{position: 30,importance: #MEDIUM }],
+           identification: [{position: 30 }],
+           selectionField: [{position: 30 }] }
+    DocumentDate;
+    
+  @UI:{ lineItem: [{position: 40,importance: #HIGH }],
+           identification: [{position: 40 }],
+           selectionField: [{position: 40 }] }
+    PostingDate;
+
+  @UI:{ lineItem: [{position: 50,importance: #MEDIUM }] }
+    CreatedByUser;
+    
+  @UI:{ lineItem: [{position: 60,importance: #MEDIUM }] }
+    CreationDate;
+
+  @UI:{ lineItem: [{position: 70,importance: #MEDIUM }] }
+    MaterialDocumentHeaderText;
+    
+}
