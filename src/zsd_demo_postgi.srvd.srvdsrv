@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD_DEMO_POSTGI'
+define service ZSD_DEMO_POSTGI {
+  expose ZC_Demo_PostGI as PostGI;
+}

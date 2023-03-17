@@ -1,0 +1,16 @@
+@Metadata.layer: #CORE
+annotate entity ZC_Demo_PostGI
+    with 
+{
+
+    @UI:{ lineItem: [
+        {position: 10}, {type: #FOR_ACTION, dataAction: 'postgi', label: 'Post GI'}
+    ]}
+    uuid;
+    
+    @UI:{ lineItem: [{position: 20}]}
+    mblnr;
+    
+    @UI:{ lineItem: [{position: 30}]}
+    mjahr;
+}

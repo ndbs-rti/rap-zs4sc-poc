@@ -3,8 +3,7 @@ projection;
 
 define behavior for ZC_Demo_MaterialDocument //alias <alias_name>
 {
-  use action testaction;
-  use action acceptTravel;
+  use action postgi;
   use association _MaterialDocumentItem;
   field ( suppress ) plant, storagelocation, issuingorreceivingplant, issuingorreceivingstorageloc;
 }

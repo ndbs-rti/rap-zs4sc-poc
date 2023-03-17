@@ -28,7 +28,7 @@ annotate view ZC_Demo_MaterialDocument
     }]
 
   @UI:{ lineItem: [{position: 10,importance: #HIGH }
-   , { type: #FOR_ACTION, dataAction: 'testaction', label: 'Test Action' }],
+   , { type: #FOR_ACTION, dataAction: 'postgi', label: 'Post GI' }],
            identification: [{position: 10 }],
            selectionField: [{position: 10 }]}
     MaterialDocumentYear;

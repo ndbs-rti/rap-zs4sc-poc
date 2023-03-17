@@ -1,0 +1,17 @@
+managed implementation in class zbp_i_demo_postgi unique;
+strict ( 1 );
+
+define behavior for ZI_Demo_PostGI //alias <alias_name>
+persistent table zdemopostgi_ta01
+with additional save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) uuid;
+  field ( readonly ) mblnr, mjahr;
+  action( features : instance ) postgi parameter ZA_Demo_Post_GI result [1] $self;
+}
