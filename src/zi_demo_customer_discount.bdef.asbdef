@@ -11,7 +11,7 @@ etag master LocalLastChangedAt
   update;
   delete;
   determination at_create on modify { create; }
-  action testaction;
+  action testaction deep parameter ZA_DEMO_BDEF_HIERARCHY_HEADER;
 
   mapping for ZDEMOE0001_TA01
   {

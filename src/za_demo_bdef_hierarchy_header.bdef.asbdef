@@ -1,0 +1,13 @@
+abstract;
+strict ( 1 );
+with hierarchy;
+
+define behavior for ZA_DEMO_BDEF_HIERARCHY_HEADER //alias <alias_name>
+{
+    association _item;
+}
+
+define behavior for ZA_DEMO_BDEF_HIERARCHY_ITEM //alias <alias_name>
+{
+    association _header;
+}

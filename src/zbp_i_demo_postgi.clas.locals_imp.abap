@@ -42,6 +42,8 @@ CLASS lhc_ZI_Demo_PostGI DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys REQUEST requested_authorizations FOR ZI_Demo_PostGI RESULT result.
     METHODS postgi FOR MODIFY
       IMPORTING keys FOR ACTION zi_demo_postgi~postgi RESULT result.
+    METHODS testdeep FOR MODIFY
+      IMPORTING keys FOR ACTION zi_demo_postgi~testdeep.
 
 ENDCLASS.
 
@@ -56,58 +58,63 @@ CLASS lhc_ZI_Demo_PostGI IMPLEMENTATION.
   METHOD postgi.
 
 
-    TRY.
+*    TRY.
+*
+*        DATA(lw_key) = keys[ 1 ].
+*
+*        MODIFY ENTITIES OF i_materialdocumenttp
+*
+*          ENTITY MaterialDocument
+*          CREATE FROM VALUE #( ( %cid = 'CID_001'
+*          goodsmovementcode = '03'
+*          postingdate = cl_abap_context_info=>get_system_date( )
+*          documentdate = cl_abap_context_info=>get_system_date( )
+*          %control-goodsmovementcode = cl_abap_behv=>flag_changed
+*          %control-postingdate = cl_abap_behv=>flag_changed
+*          %control-documentdate = cl_abap_behv=>flag_changed
+*          ) )
+*          ENTITY MaterialDocument
+*          CREATE BY \_MaterialDocumentItem
+*          FROM VALUE #( (
+*          %cid_ref = 'CID_001'
+*          %target = VALUE #( ( %cid = 'CID_ITM_001'
+*          plant = lw_key-%param-Plant
+*          material = lw_key-%param-Material
+*          GoodsMovementType = '201'
+*          storagelocation = lw_key-%param-StorageLocation
+*          QuantityInEntryUnit = lw_key-%param-QuantityInEntryUnit
+*          entryunit = lw_key-%param-EntryUnit
+*          Batch = lw_key-%param-Batch
+*          InventorySpecialStockType = lw_key-%param-InventorySpecialStockType
+*          CostCenter = |{ lw_key-%param-CostCenter ALPHA = IN }|
+*          GLAccount = |{ lw_key-%param-GLAccount ALPHA = IN }|
+*          %control-plant = cl_abap_behv=>flag_changed
+*          %control-material = cl_abap_behv=>flag_changed
+*          %control-GoodsMovementType = cl_abap_behv=>flag_changed
+*          %control-storagelocation = cl_abap_behv=>flag_changed
+*          %control-QuantityInEntryUnit = cl_abap_behv=>flag_changed
+*          %control-entryunit = cl_abap_behv=>flag_changed
+*          %control-Batch = cl_abap_behv=>flag_changed
+*          %control-InventorySpecialStockType = cl_abap_behv=>flag_changed
+*          %control-CostCenter = cl_abap_behv=>flag_changed
+*          %control-GLAccount = cl_abap_behv=>flag_changed
+*          ) )
+*          ) )
+*          MAPPED DATA(ls_create_mapped)
+*          FAILED DATA(ls_create_failed)
+*          REPORTED DATA(ls_create_reported).
+*
+*          zbp_i_demo_postgi=>cv_matdoc_mapped = ls_create_mapped.
+*          zbp_i_demo_postgi=>cv_postgi_uuid = lw_key-uuid.
+*
+*      CATCH cx_root INTO DATA(lo_exception).
+*    ENDTRY.
 
-        DATA(lw_key) = keys[ 1 ].
+  ENDMETHOD.
 
-        MODIFY ENTITIES OF i_materialdocumenttp
-
-          ENTITY MaterialDocument
-          CREATE FROM VALUE #( ( %cid = 'CID_001'
-          goodsmovementcode = '03'
-          postingdate = cl_abap_context_info=>get_system_date( )
-          documentdate = cl_abap_context_info=>get_system_date( )
-          %control-goodsmovementcode = cl_abap_behv=>flag_changed
-          %control-postingdate = cl_abap_behv=>flag_changed
-          %control-documentdate = cl_abap_behv=>flag_changed
-          ) )
-          ENTITY MaterialDocument
-          CREATE BY \_MaterialDocumentItem
-          FROM VALUE #( (
-          %cid_ref = 'CID_001'
-          %target = VALUE #( ( %cid = 'CID_ITM_001'
-          plant = lw_key-%param-Plant
-          material = lw_key-%param-Material
-          GoodsMovementType = '201'
-          storagelocation = lw_key-%param-StorageLocation
-          QuantityInEntryUnit = lw_key-%param-QuantityInEntryUnit
-          entryunit = lw_key-%param-EntryUnit
-          Batch = lw_key-%param-Batch
-          InventorySpecialStockType = lw_key-%param-InventorySpecialStockType
-          CostCenter = |{ lw_key-%param-CostCenter ALPHA = IN }|
-          GLAccount = |{ lw_key-%param-GLAccount ALPHA = IN }|
-          %control-plant = cl_abap_behv=>flag_changed
-          %control-material = cl_abap_behv=>flag_changed
-          %control-GoodsMovementType = cl_abap_behv=>flag_changed
-          %control-storagelocation = cl_abap_behv=>flag_changed
-          %control-QuantityInEntryUnit = cl_abap_behv=>flag_changed
-          %control-entryunit = cl_abap_behv=>flag_changed
-          %control-Batch = cl_abap_behv=>flag_changed
-          %control-InventorySpecialStockType = cl_abap_behv=>flag_changed
-          %control-CostCenter = cl_abap_behv=>flag_changed
-          %control-GLAccount = cl_abap_behv=>flag_changed
-          ) )
-          ) )
-          MAPPED DATA(ls_create_mapped)
-          FAILED DATA(ls_create_failed)
-          REPORTED DATA(ls_create_reported).
-
-          zbp_i_demo_postgi=>cv_matdoc_mapped = ls_create_mapped.
-          zbp_i_demo_postgi=>cv_postgi_uuid = lw_key-uuid.
-
-      CATCH cx_root INTO DATA(lo_exception).
-    ENDTRY.
-
+  METHOD testdeep.
+    IF 1 = 2.
+    ENDIF.
   ENDMETHOD.
 
 ENDCLASS.

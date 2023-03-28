@@ -19,6 +19,8 @@ CLASS lhc_CustomerDiscount IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD testaction.
+    IF 1 = 2.
+    ENDIF.
   ENDMETHOD.
 
 ENDCLASS.

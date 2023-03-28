@@ -17,7 +17,8 @@ annotate view ZC_Demo_Customer_Discount
       label: 'Discount', 
       position: 10 } ]
   
-    @UI: { lineItem: [ { position: 10 } ], 
+    @UI: { lineItem: [ { position: 10 }, 
+           { type: #FOR_ACTION, dataAction: 'testaction', label: 'Test' } ], 
            selectionField: [ { position: 10 } ] }
     BusinessPartner;
     

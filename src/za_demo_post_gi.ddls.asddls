@@ -1,5 +1,5 @@
 @EndUserText.label: 'Demo Post GI'
-define abstract entity ZA_Demo_Post_GI
+define root abstract entity ZA_Demo_Post_GI
 {
     Material : matnr;
     Plant : werks_d;

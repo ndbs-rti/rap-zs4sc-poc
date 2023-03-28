@@ -4,5 +4,7 @@ CLASS zbp_i_demo_postgi DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_demo
     CLASS-DATA cv_postgi_uuid TYPE zi_demo_postgi-uuid.
 ENDCLASS.
 
-CLASS zbp_i_demo_postgi IMPLEMENTATION.
+
+
+CLASS ZBP_I_DEMO_POSTGI IMPLEMENTATION.
 ENDCLASS.

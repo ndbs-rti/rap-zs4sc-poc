@@ -4,7 +4,8 @@ annotate entity ZC_Demo_PostGI
 {
 
     @UI:{ lineItem: [
-        {position: 10}, {type: #FOR_ACTION, dataAction: 'postgi', label: 'Post GI'}
+        {position: 10}, 
+        {type: #FOR_ACTION, dataAction: 'postgi', label: 'Post GI'}
     ]}
     uuid;
     

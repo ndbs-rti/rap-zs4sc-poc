@@ -14,4 +14,5 @@ authorization master ( instance )
   field ( numbering : managed, readonly ) uuid;
   field ( readonly ) mblnr, mjahr;
   action( features : instance ) postgi parameter ZA_Demo_Post_GI result [1] $self;
+  action testdeep deep parameter ZA_DEMO_BDEF_HIERARCHY_HEADER;
 }
