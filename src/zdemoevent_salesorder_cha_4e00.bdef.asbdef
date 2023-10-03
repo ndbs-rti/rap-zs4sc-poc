@@ -1,0 +1,8 @@
+abstract;
+strict;
+with hierarchy;
+
+define behavior for ZDEMOEVENT_SalesOrder_Cha_4E00
+with control
+
+{}

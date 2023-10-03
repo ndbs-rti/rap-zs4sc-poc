@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+annotate view ZC_DEMO_Mat
+    with 
+{
+@UI.selectionField: [ { position: 10 } ]
+    @UI:{ lineItem: [{position: 10 }] }
+    MaterialDocumentYear;
+ @UI.selectionField: [ { position: 20 } ]  
+  @UI:{ lineItem: [{position: 20 }] }
+    MaterialDocument;
+    
+   @UI:{ lineItem: [{position: 30 }] }
+    DocumentDate;
+    
+  @UI:{ lineItem: [{position: 40 }] }
+    PostingDate;
+
+  @UI:{ lineItem: [{position: 50 }] }
+    CreatedByUser;
+    
+  
+    
+}

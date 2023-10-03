@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD_DEMO_BP'
+define service ZSD_DEMO_BP {
+  expose ZC_DEMO_BP;
+}

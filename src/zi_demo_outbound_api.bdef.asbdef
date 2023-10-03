@@ -1,0 +1,12 @@
+managed implementation in class zbp_i_demo_outbound_api unique;
+strict ( 2 );
+
+define behavior for ZI_DEMO_OUTBOUND_API
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  action CallGoRestAPI;
+  static action PostMatDoc parameter ZA_Demo_Post_GI;
+}

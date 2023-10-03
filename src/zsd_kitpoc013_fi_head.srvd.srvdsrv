@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD_KITPOC013_FI_HEAD'
+define service ZSD_KITPOC013_FI_HEAD {
+  expose ZC_KITPOC013_FI_Head;
+}

@@ -6,7 +6,9 @@ CLASS lhc_CustomerDiscount DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS at_create FOR DETERMINE ON MODIFY
       IMPORTING keys FOR customerdiscount~at_create.
     METHODS testaction FOR MODIFY
-      IMPORTING keys FOR ACTION customerdiscount~testaction.
+      IMPORTING keys
+      FOR ACTION customerdiscount~testaction
+      RESULT result.
 
 ENDCLASS.
 
@@ -19,8 +21,14 @@ CLASS lhc_CustomerDiscount IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD testaction.
-    IF 1 = 2.
-    ENDIF.
+
+    DATA(key) = keys[ 1 ].
+
+    APPEND INITIAL LINE TO result ASSIGNING FIELD-SYMBOL(<lfs_result>).
+    "<lfs_result>-%key = key-%key.
+    <lfs_result>-%param = VALUE #( dnumb = '99999'
+                                   _item = key-%param-_item[] ).
+
   ENDMETHOD.
 
 ENDCLASS.

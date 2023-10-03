@@ -1,0 +1,11 @@
+@EndUserText.label: 'AC for ZC_DEMO_MASS_PI_COUNT'
+@MappingRole: true
+define role ZC_DEMO_MASS_PI_COUNT {
+    grant
+        select
+            on
+                ZC_DEMO_MASS_PI_COUNT
+                    where
+                        inheriting conditions from entity ZI_DEMO_MASS_PI_COUNT;
+                        
+}

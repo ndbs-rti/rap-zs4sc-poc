@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+annotate entity ZC_DEMO_BP
+    with 
+{
+  @UI.selectionField: [ { position: 10 } ]
+  @UI:{ lineItem: [{position: 10 }] }
+  BusinessPartner;
+  @UI:{ lineItem: [{position: 20 }] }
+  LastName;
+  @UI:{ lineItem: [{position: 30 }] }
+  FirstName;
+  @UI:{ lineItem: [{position: 40 }] }  
+  FormOfAddress;
+  @UI:{ lineItem: [{position: 50 }] }  
+  NickName;
+  @UI:{ lineItem: [{position: 60 }] }  
+  BusinessPartnerIsBlocked;
+  @UI:{ lineItem: [{position: 70 }] }  
+  CreatedByUser;
+  @UI:{ lineItem: [{position: 80 }] }  
+  CreationDateTime;
+    
+}

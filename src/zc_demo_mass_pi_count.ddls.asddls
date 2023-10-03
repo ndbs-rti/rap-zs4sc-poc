@@ -19,4 +19,4 @@ define root view entity ZC_Demo_Mass_PI_Count as projection on  ZI_Demo_Mass_PI_
     PhysicalInventoryLastCountDate,
     _Stock.Stock,
     _Stock.MaterialBaseUnit
-}
+} where QuantityInUnitOfEntry <> 33

@@ -1,0 +1,16 @@
+@Metadata.layer: #CORE
+annotate entity ZC_KITPOC019
+    with 
+{
+    @UI.selectionField: [ { position: 10 } ]
+    @UI:{ lineItem: [{position: 10 }] }
+    Businesspartner;
+    @UI:{ lineItem: [{position: 20 }] }
+    Firstname;
+    @UI:{ lineItem: [{position: 30 }] }
+    Lastname;
+    @UI:{ lineItem: [{position: 40 }] }
+    Nickname;
+    @UI:{ lineItem: [{position: 50 }] }
+    Emailaddress;
+}

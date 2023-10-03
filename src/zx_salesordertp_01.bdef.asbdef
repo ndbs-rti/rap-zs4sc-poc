@@ -1,0 +1,6 @@
+extension using interface i_salesordertp
+implementation in class zbp_x_salesordertp_01 unique;
+
+
+extend behavior for SalesOrder{
+}

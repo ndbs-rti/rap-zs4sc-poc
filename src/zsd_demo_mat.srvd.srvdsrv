@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD DEMO_MAT'
+define service ZSD_DEMO_MAT {
+  expose ZC_DEMO_Mat;
+}

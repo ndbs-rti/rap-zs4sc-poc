@@ -1,0 +1,8 @@
+abstract;
+strict;
+with hierarchy;
+
+define behavior for ZDEMOEVENT_SalesOrder_Ite_6C16
+with control
+
+{}

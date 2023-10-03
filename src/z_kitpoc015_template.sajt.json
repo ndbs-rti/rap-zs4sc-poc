@@ -1,0 +1,29 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Job KITPOC015 Template",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "catalogName": "Z_KITPOC015_CATALOG"
+  },
+  "parameters": {
+    "valueRangesParameters": [
+      {
+        "name": "S_ERDAT",
+        "valueRanges": [
+          {
+            "sign": "include",
+            "option": "equals",
+            "low": "20230929"
+          }
+        ]
+      },
+      {
+        "name": "S_VBELN",
+        "valueRanges": []
+      }
+    ]
+  }
+}

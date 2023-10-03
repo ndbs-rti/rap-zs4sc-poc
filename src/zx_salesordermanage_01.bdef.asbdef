@@ -1,0 +1,9 @@
+extension for projection;
+
+extend behavior for SalesOrder
+{
+}
+
+extend behavior for SalesOrderItem
+{
+}

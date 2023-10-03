@@ -29,6 +29,15 @@
       <UIAD_SRC>ZDEMOE0013_UI5R</UIAD_SRC>
       <TYPE_TEXT>OData V2</TYPE_TEXT>
      </item>
+     <item>
+      <REL_NAME>ZSB_DM_COUNT_O4</REL_NAME>
+      <REL_TYPE>G4BA</REL_TYPE>
+      <APP_ID>ZDEMOE0013_IAM_EXT</APP_ID>
+      <SRVC_NAME>5A53FCCF89FAC1FFC3110D3913A7ED</SRVC_NAME>
+      <SRVC_TYPE>HT</SRVC_TYPE>
+      <TEXT>Demo Mass PI Count</TEXT>
+      <TYPE_TEXT>OData V4</TYPE_TEXT>
+     </item>
     </SERVICE>
     <AUTH>
      <item>
@@ -37,6 +46,7 @@
       <TEXT>Demo Custom Auth.Object</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>e0eUEqgJHt26sanDoPECkg==</UUID>
         <AUTH_OBJECT>ZDEMOAUOBJ</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Demo Custom Auth.Object</TEXT>
@@ -44,12 +54,14 @@
         <VALUES>
          <item>
           <FIELD>ACTVT</FIELD>
-          <VALUE>Display, Change</VALUE>
+          <VALUE>Display,Change</VALUE>
           <VALUES>
            <item>
+            <UUID>e0eUEqgJHt26sanDoPEikg==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
            <item>
+            <UUID>e0eUEqgJHt26sanDoPFCkg==</UUID>
             <LOW_VALUE>02</LOW_VALUE>
            </item>
           </VALUES>
@@ -62,6 +74,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
    </SIA6>
   </asx:values>
  </asx:abap>

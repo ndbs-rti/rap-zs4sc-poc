@@ -37,6 +37,7 @@
       <TEXT>Demo Custom Auth.Object</TEXT>
       <AUTH_ITEM>
        <item>
+        <UUID>52IAhkxWHu2st4tx2SoCqA==</UUID>
         <AUTH_OBJECT>ZDEMOAUOBJ</AUTH_OBJECT>
         <AUTH_OBJECT_INSTANCE>0001</AUTH_OBJECT_INSTANCE>
         <TEXT>Demo Custom Auth.Object</TEXT>
@@ -47,6 +48,7 @@
           <VALUE>Display</VALUE>
           <VALUES>
            <item>
+            <UUID>52IAhkxWHu2st4tx2SoiqA==</UUID>
             <LOW_VALUE>03</LOW_VALUE>
            </item>
           </VALUES>
@@ -59,6 +61,7 @@
       </AUTH_ITEM>
      </item>
     </AUTH>
+    <PUBLISH_STATUS>p</PUBLISH_STATUS>
    </SIA6>
   </asx:values>
  </asx:abap>

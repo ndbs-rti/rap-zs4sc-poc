@@ -1,0 +1,8 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_KITPOC013_FI_Head //alias <alias_name>
+{
+
+  use action ChangeBaselineDate;
+}

@@ -1,0 +1,26 @@
+@Metadata.layer: #CORE
+annotate entity ZC_DEMO_OUTBOUND_API
+    with 
+{
+  @UI.selectionField: [ { position: 10 } ]
+  @UI:{ lineItem: [{position: 10 },
+  { type: #FOR_ACTION, dataAction: 'CallGoRestAPI', label: 'Call Go Rest with ABAP' },
+  { type: #FOR_ACTION, dataAction: 'PostMatDoc', label: 'Post Material Document' }] }
+  BusinessPartner;
+  @UI:{ lineItem: [{position: 20 }] }
+  FirstName;
+  @UI:{ lineItem: [{position: 30 }] }
+  LastName;
+  @UI:{ lineItem: [{position: 40 }] }  
+  UserID;
+  @UI:{ lineItem: [{position: 50 }] }  
+  DefaultEmailAddress;
+  @UI:{ lineItem: [{position: 60 }] }  
+  AddressID;
+  @UI:{ lineItem: [{position: 70 }] }  
+  AddressPersonID;
+  @UI:{ lineItem: [{position: 80 }] }  
+  CreatedByUser;
+  @UI:{ lineItem: [{position: 90 }] }  
+  CreationDateTime;
+}

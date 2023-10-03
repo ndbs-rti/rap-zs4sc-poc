@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD_KITPOC019'
+define service ZSD_KITPOC019 {
+  expose ZC_KITPOC019;
+}

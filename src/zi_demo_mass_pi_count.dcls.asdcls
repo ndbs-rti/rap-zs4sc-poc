@@ -1,0 +1,10 @@
+@EndUserText.label: 'AC for ZI_DEMO_MASS_PI_COUNT'
+@MappingRole: true
+define role ZI_DEMO_MASS_PI_COUNT {
+    grant
+        select
+            on
+                ZI_DEMO_MASS_PI_COUNT
+                    where ( Plant ) = aspect pfcg_auth ( M_ISEG_WDB, werks, actvt = '03'  );
+                        
+}

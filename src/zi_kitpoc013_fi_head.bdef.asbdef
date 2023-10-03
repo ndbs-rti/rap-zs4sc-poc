@@ -1,0 +1,11 @@
+managed implementation in class zbp_i_kitpoc013_fi_head unique;
+strict ( 2 );
+
+define behavior for ZI_KITPOC013_FI_Head //alias <alias_name>
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+    action ChangeBaselineDate parameter ZA_KITPOC013_Param;
+}

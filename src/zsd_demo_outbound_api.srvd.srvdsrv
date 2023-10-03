@@ -1,0 +1,4 @@
+@EndUserText.label: 'ZSD Demo Outbound API Interface'
+define service ZSD_DEMO_OUTBOUND_API {
+  expose ZC_DEMO_OUTBOUND_API;
+}
