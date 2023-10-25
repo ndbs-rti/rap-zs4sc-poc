@@ -1,12 +1,12 @@
 {
   "formatVersion": "1",
   "header": {
-    "description": "Job KITPOC015 Template",
+    "description": "Job KITPOC015 Template 02",
     "originalLanguage": "en",
     "abapLanguageVersion": "cloudDevelopment"
   },
   "generalInformation": {
-    "catalogName": "Z_KITPOC015_CATALOG"
+    "catalogName": "Z_KITPOC015_CATALOG02"
   },
   "parameters": {
     "singleValueParameters": [

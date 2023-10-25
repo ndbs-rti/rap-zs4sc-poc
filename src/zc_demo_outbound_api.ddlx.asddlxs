@@ -5,7 +5,8 @@ annotate entity ZC_DEMO_OUTBOUND_API
   @UI.selectionField: [ { position: 10 } ]
   @UI:{ lineItem: [{position: 10 },
   { type: #FOR_ACTION, dataAction: 'CallGoRestAPI', label: 'Call Go Rest with ABAP' },
-  { type: #FOR_ACTION, dataAction: 'PostMatDoc', label: 'Post Material Document' }] }
+  { type: #FOR_ACTION, dataAction: 'PostMatDoc', label: 'Post Material Document' },
+  { type: #FOR_ACTION, dataAction: 'CallAdobeService', label: 'Call Adobe Service with ABAP' }] }
   BusinessPartner;
   @UI:{ lineItem: [{position: 20 }] }
   FirstName;

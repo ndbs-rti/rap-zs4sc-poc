@@ -15,6 +15,8 @@ CLASS lhc_zi_demo_outbound_api DEFINITION INHERITING FROM cl_abap_behavior_handl
       IMPORTING keys FOR ACTION zi_demo_outbound_api~callgorestapi.
     METHODS postmatdoc FOR MODIFY
       IMPORTING keys FOR ACTION zi_demo_outbound_api~postmatdoc.
+    METHODS calladobeservice FOR MODIFY
+      IMPORTING keys FOR ACTION zi_demo_outbound_api~calladobeservice.
 
 ENDCLASS.
 
@@ -142,6 +144,9 @@ CLASS lhc_zi_demo_outbound_api IMPLEMENTATION.
 
     ENDTRY.
 
+  ENDMETHOD.
+
+  METHOD calladobeservice.
   ENDMETHOD.
 
 ENDCLASS.

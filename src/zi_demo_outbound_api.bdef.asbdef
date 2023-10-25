@@ -8,5 +8,6 @@ authorization master ( instance )
 //etag master <field_name>
 {
   action CallGoRestAPI;
+  action CallAdobeService;
   static action PostMatDoc parameter ZA_Demo_Post_GI;
 }

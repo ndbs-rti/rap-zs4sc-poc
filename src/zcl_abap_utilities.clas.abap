@@ -1,9 +1,10 @@
-CLASS zcl_execute_adt_class DEFINITION
+CLASS zcl_abap_utilities DEFINITION
   PUBLIC
   FINAL
   CREATE PUBLIC .
 
   PUBLIC SECTION.
+
     TYPES: BEGIN OF gty_file,
              filename TYPE string,
              filedata TYPE string,
@@ -13,9 +14,8 @@ CLASS zcl_execute_adt_class DEFINITION
              files TYPE gtty_file,
            END OF gty_inb_files.
 
-    INTERFACES if_oo_adt_classrun .
-
-    METHODS getInboundTextFile
+    METHODS getinboundtextfile
+      IMPORTING VALUE(iv_ftp_dir) TYPE string
       RETURNING VALUE(rw_inb_files) TYPE gty_inb_files.
 
   PROTECTED SECTION.
@@ -24,7 +24,7 @@ ENDCLASS.
 
 
 
-CLASS ZCL_EXECUTE_ADT_CLASS IMPLEMENTATION.
+CLASS ZCL_ABAP_UTILITIES IMPLEMENTATION.
 
 
   METHOD getinboundtextfile.
@@ -32,7 +32,7 @@ CLASS ZCL_EXECUTE_ADT_CLASS IMPLEMENTATION.
     DATA: lw_inb_files TYPE gty_inb_files.
 
     DATA(lv_url) = |https://demonodejsapp-mediating-shark-lk.cfapps.eu10-004.hana.ondemand.com| &&
-    |/znodejsapi/ftpapi/getfile?ftpdir=testinb|.
+    |/znodejsapi/ftpapi/getfile?ftpdir={ iv_ftp_dir }|.
 
     TRY.
 
@@ -61,50 +61,6 @@ CLASS ZCL_EXECUTE_ADT_CLASS IMPLEMENTATION.
       CATCH cx_root.
 
     ENDTRY.
-
-  ENDMETHOD.
-
-
-  METHOD if_oo_adt_classrun~main.
-
-    DATA(lo_apj_create) = cl_apj_dt_create_content=>get_instance( ).
-
-    " Delete job cat
-*    lo_apj_create->delete_job_cat_entry(
-*      iv_catalog_name = 'Z_KITPOC015_CATALOG'
-*      iv_transport_request = 'YYNK900059'
-*      ).
-
-    " Create job catalog
-    lo_apj_create->create_job_cat_entry(
-      iv_catalog_name = 'Z_KITPOC015_CATALOG'
-      iv_class_name = 'zcl_kitpoc015_job_template'
-      iv_text = 'Job KITPOC015 Catalog'
-      iv_catalog_entry_type = cl_apj_dt_create_content=>class_based
-      iv_transport_request = 'YYNK900059'
-      iv_package = 'ZS4SC'
-      ).
-
-    out->write( |Job catalog entry created successfully| ).
-
-    " Create job template
-    DATA lt_parameters TYPE if_apj_dt_exec_object=>tt_templ_val.
-
-    NEW zcl_kitpoc015_job_template( )->if_apj_dt_exec_object~get_parameters(
-      IMPORTING
-      et_parameter_val = lt_parameters
-      ).
-
-    lo_apj_create->create_job_template_entry(
-      iv_template_name = 'Z_KITPOC015_TEMPLATE'
-      iv_catalog_name = 'Z_KITPOC015_CATALOG'
-      iv_text = 'Job KITPOC015 Template'
-      it_parameters = lt_parameters
-      iv_transport_request = 'YYNK900059'
-      iv_package = 'ZS4SC'
-      ).
-
-    out->write( |Job template created successfully| ).
 
   ENDMETHOD.
 ENDCLASS.

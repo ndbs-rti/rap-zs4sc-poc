@@ -5,4 +5,5 @@ define behavior for ZC_DEMO_OUTBOUND_API //alias <alias_name>
 {
   use action CallGoRestAPI;
   use action PostMatDoc;
+  use action CallAdobeService;
 }

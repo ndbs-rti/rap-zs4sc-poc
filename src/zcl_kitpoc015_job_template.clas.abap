@@ -5,17 +5,23 @@ CLASS zcl_kitpoc015_job_template DEFINITION
 
   PUBLIC SECTION.
 
-    TYPES: BEGIN OF gty_gorest_user_body,
-             name   TYPE string,
-             gender TYPE string,
-             email  TYPE string,
-             status TYPE string,
-           END OF gty_gorest_user_body.
+    TYPES: BEGIN OF gty_file,
+             filepath TYPE string,
+             filename TYPE string,
+             filedata TYPE string,
+           END OF gty_file,
+           gtty_file TYPE TABLE OF gty_file WITH DEFAULT KEY,
+           BEGIN OF gty_inb_files,
+             files TYPE gtty_file,
+           END OF gty_inb_files.
 
     INTERFACES if_apj_dt_exec_object .
     INTERFACES if_apj_rt_exec_object .
   PROTECTED SECTION.
   PRIVATE SECTION.
+    METHODS getinboundtextfile
+      IMPORTING VALUE(iv_ftp_dir) TYPE string
+      RETURNING VALUE(rw_inb_files) TYPE gty_inb_files.
 ENDCLASS.
 
 
@@ -23,63 +29,12 @@ ENDCLASS.
 CLASS ZCL_KITPOC015_JOB_TEMPLATE IMPLEMENTATION.
 
 
-  METHOD if_apj_dt_exec_object~get_parameters.
+  METHOD getinboundtextfile.
 
-    " Return the supported selection parameters here
-    et_parameter_def = VALUE #(
-      ( selname = 'S_VBELN' kind = if_apj_dt_exec_object=>select_option datatype = 'C' length = 10
-      param_text = 'Sales Order' changeable_ind = abap_true )
-      ( selname = 'S_ERDAT' kind = if_apj_dt_exec_object=>select_option datatype = 'D'
-      param_text = 'Created Date' changeable_ind = abap_true )
-    ).
+    DATA: lw_inb_files TYPE gty_inb_files.
 
-    " Return the default parameters values here
-    et_parameter_val = VALUE #(
-      ( selname = 'S_ERDAT' kind = if_apj_dt_exec_object=>select_option sign = 'I' option = 'EQ'
-      low = cl_abap_context_info=>get_system_date( ) )
-      ).
-
-  ENDMETHOD.
-
-
-  METHOD if_apj_rt_exec_object~execute.
-
-    DATA: lr_vbeln TYPE RANGE OF i_salesorder-SalesOrder,
-          lr_erdat TYPE RANGE OF i_salesorder-CreationDate.
-
-    SELECT SalesOrder FROM i_salesorder
-    WHERE CreationDate IN @lr_erdat AND
-          SalesOrder IN @lr_vbeln
-    INTO TABLE @DATA(lt_SalesOrder).
-
-    DATA(lo_log) = cl_bali_log=>create_with_header( cl_bali_header_setter=>create( object =
-                     'ZJL_KITPOC015' subobject = 'ZSUBOBJECT1' ) ).
-
-    LOOP AT lt_SalesOrder INTO DATA(lw_SalesOrder).
-
-      DATA(lo_application_log_free_text) = cl_bali_free_text_setter=>create(
-                                            severity = if_bali_constants=>c_severity_status
-                                            text = CONV #(
-                                            |Service order XXX has been created from { lw_SalesOrder-SalesOrder }| ) ).
-
-      lo_application_log_free_text->set_detail_level( detail_level = '1' ).
-      lo_log->add_item( item = lo_application_log_free_text ).
-
-    ENDLOOP.
-    cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_true ).
-
-    DATA: lw_body_abap     TYPE gty_gorest_user_body.
-
-    lw_body_abap-name = '12345'.
-    lw_body_abap-gender = 'male'.
-    lw_body_abap-email = |{ cl_uuid_factory=>create_system_uuid( )->create_uuid_c32( ) }@hmail.com|.
-    lw_body_abap-status = 'active'.
-
-    DATA(lv_body_json) = /ui2/cl_json=>serialize( data = lw_body_abap
-                                                  pretty_name = /ui2/cl_json=>pretty_mode-camel_case ).
-
-    DATA(lv_url) = 'https://gorest.co.in/public/v2/users'.
-    DATA(lv_token) = '810bcabb44e31a13b754d853d6cb3cf798d73dbc1aa5b6b35027365511ab8ad4'.
+    DATA(lv_url) = |https://demonodejsapp-mediating-shark-lk.cfapps.eu10-004.hana.ondemand.com| &&
+    |/znodejsapi/ftpapi/getfile?ftpdir={ iv_ftp_dir }|.
 
     TRY.
 
@@ -87,24 +42,91 @@ CLASS ZCL_KITPOC015_JOB_TEMPLATE IMPLEMENTATION.
         DATA(lo_http_client)  = cl_web_http_client_manager=>create_by_http_destination( lo_http_destination ).
         DATA(lo_http_request) = lo_http_client->get_http_request( ).
 
-        lo_http_request->set_authorization_bearer( i_bearer = CONV #( lv_token ) ).
+        lo_http_request->set_authorization_basic( i_username = 'ndbsabap01'
+                                                  i_password = 'Thailand@123' ).
 
-        lo_http_request->set_content_type( content_type = 'application/json' ).
-        lo_http_request->set_text( i_text = lv_body_json
-                                   i_length = strlen( lv_body_json ) ).
+        DATA(lo_http_response) = lo_http_client->execute( i_method  = if_web_http_client=>get ).
 
-        DATA(lo_http_response) = lo_http_client->execute( i_method  = if_web_http_client=>post ).
-
+        DATA(lv_reponse_status) = lo_http_response->get_status( ).
         DATA(lv_reponse_body) = lo_http_response->get_text( ).
 
-*        DATA(lv_msg) = |Service order XXX has been created from { lt_SalesOrder[ 1 ]-SalesOrder } ...|.
-*        RAISE EXCEPTION TYPE CX_APJ_RT_CONTENT
-*        MESSAGE ID 'ZMSGCLASS'
-*        TYPE 'I' NUMBER '000'  WITH lv_msg.
+        IF lv_reponse_status-code = 200.
+
+          /ui2/cl_json=>deserialize(
+              EXPORTING
+                  json = lv_reponse_body
+              CHANGING
+                  data = rw_inb_files ).
+
+        ENDIF.
 
       CATCH cx_root.
 
     ENDTRY.
+
+  ENDMETHOD.
+
+
+  METHOD if_apj_dt_exec_object~get_parameters.
+
+    " Return the supported selection parameters here
+*    et_parameter_def = VALUE #(
+*      ( selname = 'S_VBELN' kind = if_apj_dt_exec_object=>select_option datatype = 'C' length = 10
+*      param_text = 'Sales Orderrr' changeable_ind = abap_true )
+*      ( selname = 'S_ERDAT' kind = if_apj_dt_exec_object=>select_option datatype = 'D'
+*      param_text = 'Created Date' changeable_ind = abap_true )
+*    ).
+*
+*    " Return the default parameters values here
+*    et_parameter_val = VALUE #(
+*      ( selname = 'S_ERDAT' kind = if_apj_dt_exec_object=>select_option sign = 'I' option = 'EQ'
+*      low = cl_abap_context_info=>get_system_date( ) )
+*      ).
+
+    et_parameter_def = VALUE #(
+      ( selname = 'P_FTPDIR' kind = if_apj_dt_exec_object=>parameter datatype = 'C' length = 100
+      param_text = 'FTP Directory' changeable_ind = abap_true ) ).
+
+    et_parameter_val = VALUE #(
+      ( selname = 'P_FTPDIR' kind = if_apj_dt_exec_object=>parameter sign = 'I' option = 'EQ'
+      low = 'testinb' ) ).
+
+  ENDMETHOD.
+
+
+  METHOD if_apj_rt_exec_object~execute.
+
+    LOOP AT it_parameters INTO DATA(lw_parameter).
+      CASE lw_parameter-selname.
+        WHEN 'P_FTPDIR'.
+            DATA(lv_ftpdir) = lw_parameter-low.
+      ENDCASE.
+    ENDLOOP.
+
+    DATA(lw_inb_files) = getinboundtextfile( iv_ftp_dir = conv #( lv_ftpdir ) ).
+
+    DATA(lo_log) = cl_bali_log=>create_with_header( cl_bali_header_setter=>create( object =
+                     'ZJL_KITPOC015' subobject = 'ZSUBOBJECT1' ) ).
+
+    LOOP AT lw_inb_files-files INTO DATA(lw_file).
+
+      DATA(lv_decoded_data) = cl_web_http_utility=>decode_base64( encoded = lw_file-filedata ).
+
+      DATA(lo_application_log_free_text) = cl_bali_free_text_setter=>create(
+                                            severity = if_bali_constants=>c_severity_status
+                                            text = CONV #(
+                                            |{ lw_file-filename } has been downloaded.| ) ).
+      lo_application_log_free_text->set_detail_level( detail_level = '1' ).
+      lo_log->add_item( item = lo_application_log_free_text ).
+
+      DATA(lo_application_log_detail_2) = cl_bali_free_text_setter=>create(
+                                            severity = if_bali_constants=>c_severity_status
+                                            text = CONV #( lv_decoded_data ) ).
+      lo_application_log_detail_2->set_detail_level( detail_level = '2' ).
+      lo_log->add_item( item = lo_application_log_detail_2 ).
+
+    ENDLOOP.
+    cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_true ).
 
   ENDMETHOD.
 ENDCLASS.

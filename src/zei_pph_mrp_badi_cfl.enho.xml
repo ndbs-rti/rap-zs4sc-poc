@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ENHO" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TOOL>BADI_IMPL</TOOL>
+   <SHORTTEXT>EI for ES_PPH_MRP_BADI_CFL</SHORTTEXT>
+   <SPOT_NAME>ES_PPH_MRP_BADI_CFL</SPOT_NAME>
+   <IMPL>
+    <ENH_BADI_IMPL_DATA>
+     <SPOT_NAME>ES_PPH_MRP_BADI_CFL</SPOT_NAME>
+     <BADI_NAME>PPH_MRP_PURREQ_CFL</BADI_NAME>
+     <IMPL_NAME>ZIM_PPH_MRP_PURREQ_CFL_01</IMPL_NAME>
+     <IMPL_CLASS>ZCL_PPH_MRP_PURREQ_CFL_01</IMPL_CLASS>
+     <ACTIVE>X</ACTIVE>
+     <IMPL_SHORTTEXT>ZIM_PPH_MRP_PURREQ_CFL_01</IMPL_SHORTTEXT>
+     <LOCKED_IN_CUSTOMIZING>X</LOCKED_IN_CUSTOMIZING>
+    </ENH_BADI_IMPL_DATA>
+   </IMPL>
+  </asx:values>
+ </asx:abap>
+</abapGit>
